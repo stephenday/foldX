@@ -10,15 +10,29 @@ body{ font-size:12px; color:#333; font-family:Arial, Helvetica, sans-serif;}
 .main p{ line-height:18px;}
 
 /*fX css by hongyi.dai@gmail.com*/
-.fX_container{ position:relative; width:500px; margin:0 auto;}
-.fX_wrapper{ position:absolute; left:0; top:0; -webkit-perspective:1200; -webkit-transform-style:preserve-3d; -moz-perspective:1200; -moz-transform-style:preserve-3d;}
-.fX_blcok{ overflow:hidden;}
-.fX_block_0{ -moz-transform-origin:top; -webkit-transform-origin:top; -moz-transform:rotateX(-60deg); -webkit-transform:rotateX(-60deg);}
+.fX_container{ position:relative; width:500px; margin:0 auto; -webkit-perspective:1200px; -webkit-transform-style:preserve-3d; height:0; background:#ccc;}
+.fX_wrapper{ -moz-perspective:1200;}
+.fX_blcok{ position:absolute; overflow:hidden; -moz-transition:-moz-transform 2s; -webkit-transition:-webkit-transform 2s linear; overflow:hidden; width:100%;}
+2.fX_blcok:hover{ -moz-transform:rotateX(0deg); 2-webkit-transform:rotateX(0deg);}
+.fX_block_0{ -moz-transform-origin:top; -webkit-transform-origin:top; -moz-transform:rotateX(-90deg); -webkit-transform:rotateX(-90deg); top:0;}
+.fX_block_1{ -moz-transform-origin:bottom; -webkit-transform-origin:bottom; -moz-transform:rotateX(90deg); -webkit-transform:rotateX(90deg); bottom:0;}
+.fX_block_0 .fX_block_wrapper{}
+.fX_block_1 .fX_block_wrapper{ position:absolute; bottom:0;}
 </style>
 <script type="application/javascript" src="js/jquery-1.7.2.min.js"></script>
 <script type="application/javascript">
 $(document).ready(function(){
-	
+	var mainHeight = $('.main').height() + 20;
+	$('.fX_blcok').height(mainHeight/2);
+	//$('.fX_container').height(mainHeight)
+	$('body').hover(function(){
+		$('.fX_blcok').css({'-moz-transform':'rotateX(0deg)','-webkit-transform':'rotateX(0deg)'});
+		$('.fX_container').animate({'height':mainHeight},{duration:1900,easing:'linear'})
+	},function(){
+		//$('.fX_blcok').css({'-moz-transform':'rotateX(0deg)','-webkit-transform':'rotateX(0deg)'});
+		$('.fX_blcok_0').css({'-moz-transform':'rotateX(-90deg)','-webkit-transform':'rotateX(-90deg)'});
+		$('.fX_blcok_1').css({'-moz-transform':'rotateX(90deg)','-webkit-transform':'rotateX(90deg)'});
+	});
 });
 </script>
 </head>
@@ -26,13 +40,39 @@ $(document).ready(function(){
 <body>
 <div class="fX_container">
 	<div class="fX_wrapper">
+    
         <div class="fX_blcok fX_block_0">
-            <div class="main">
-                <h2>the name of activity</h2>
-                <p>the summary of the activity.for example,who,when,where,and do what.</p>
-                <p>we eat and play.</p>
+        	<div class="fX_block_wrapper">
+                <div class="main">
+                    <h2>the name of activity</h2>
+                    <p>the summary of the activity.for example,who,when,where,and do what.</p>
+                    <p>we eat and play.</p>
+                    <p>the summary of the activity.for example,who,when,where,and do what.</p>
+                    <p>we eat and play.</p>
+                    <p>the summary of the activity.for example,who,when,where,and do what.</p>
+                    <p>we eat and play.</p>
+                    <p>the summary of the activity.for example,who,when,where,and do what.</p>
+                    <p>we eat and play.</p>
+                </div>
             </div>
         </div>
+        
+        <div class="fX_blcok fX_block_1">
+        	<div class="fX_block_wrapper">
+                <div class="main">
+                    <h2>the name of activity</h2>
+                    <p>the summary of the activity.for example,who,when,where,and do what.</p>
+                    <p>we eat and play.</p>
+                    <p>the summary of the activity.for example,who,when,where,and do what.</p>
+                    <p>we eat and play.</p>
+                    <p>the summary of the activity.for example,who,when,where,and do what.</p>
+                    <p>we eat and play.</p>
+                    <p>the summary of the activity.for example,who,when,where,and do what.</p>
+                    <p>we eat and play.</p>
+                </div>
+         	</div>
+        </div>
+        
     </div>
 </div>
 
