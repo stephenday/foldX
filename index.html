@@ -19,15 +19,32 @@ body{ font-size:12px; color:#333; font-family:Arial, Helvetica, sans-serif;}
 .fX_block_0 .fX_block_wrapper{}
 .fX_block_1 .fX_block_wrapper{ position:absolute; bottom:0;}
 </style>
-<script type="application/javascript" src="js/jquery-1.7.2.min.js"></script>
-<script type="application/javascript">
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+function xPlus(t,x2){
+	var h = $('.a').height();
+	h += t;
+	$('.a').height(h);
+}
+function xPlusTime(x1,x2,duration){
+	$('.a').height(x1);
+	var t = (x2 - x1) / duration;
+	
+	setInterval(xPlus(t,x2),1);
+	x1 += t;
+	//document.write(x1);
+}
+
+xPlusTime(100,200,2000);
+
+
 $(document).ready(function(){
-	var mainHeight = $('.main').height() + 20;
+	var mainHeight = $('.main').height() + 20-1;
 	$('.fX_blcok').height(mainHeight/2);
 	//$('.fX_container').height(mainHeight)
 	$('body').hover(function(){
 		$('.fX_blcok').css({'-moz-transform':'rotateX(0deg)','-webkit-transform':'rotateX(0deg)'});
-		$('.fX_container').animate({'height':mainHeight},{duration:1900,easing:'linear'})
+		$('.fX_container').animate({'height':mainHeight},{'duration':2000,'easing':'linear'})
 	},function(){
 		//$('.fX_blcok').css({'-moz-transform':'rotateX(0deg)','-webkit-transform':'rotateX(0deg)'});
 		$('.fX_blcok_0').css({'-moz-transform':'rotateX(-90deg)','-webkit-transform':'rotateX(-90deg)'});
@@ -38,6 +55,7 @@ $(document).ready(function(){
 </head>
 
 <body>
+<div class="a" style="border:1px solid #333; width:100px;"></div>
 <div class="fX_container">
 	<div class="fX_wrapper">
     
